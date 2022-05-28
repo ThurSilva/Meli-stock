@@ -3,7 +3,7 @@ from peewee import *
 from app.database import BaseModel
 
 class Device (BaseModel):
-    name = CharField(unique=True)
+    name = CharField()
     quantity = IntegerField()
     active = BooleanField()
     description = CharField()

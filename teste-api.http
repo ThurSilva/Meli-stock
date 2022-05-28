@@ -1,0 +1,63 @@
+#=============== ADD NEW STOCKS OR DEVICES IN A STOCK ===============#
+POST http://localhost:5000/stock/add
+Content-Type: application/json
+
+{
+    "name":"SC",
+    "address":"Estrada dos romeiros",
+    "number": 102,
+    "description": "CD capital",
+    "active": 3
+}
+
+###
+POST http://localhost:5000/device/add
+Content-Type: application/json
+
+{
+    "name":"Smartphone b",
+    "quantity": 55,
+    "active": 1,
+    "description": "Modelo b",
+    "stock_id": 1
+}
+
+###
+#===================== UPDATE TABLE(S) FIELD(S) =====================#
+PATCH http://localhost:5000/stock/update/2
+Content-Type: application/json
+
+{
+    "address": "AV Copacabana"
+}
+
+###
+PATCH http://localhost:5000/device/update/3
+Content-Type: application/json
+
+{
+    "name": "Smartphone x",
+    "description": "Modelo x",
+    "stock": 2
+}
+
+###
+#============================ DEACTIVATE ============================#
+DELETE http://localhost:5000/stock/desativar/2
+###
+DELETE http://localhost:5000/device/desativar/5
+
+###
+#===================== LIST STOCKS AND DEVICES ======================#
+GET http://localhost:5000/stocks/lista
+###
+GET http://localhost:5000/devices/lista
+
+###
+#======================== DEVICES IN A STOCK ========================#
+GET http://localhost:5000/devicesInStock/lista
+Content-Type: application/json
+
+{
+    "stock_id": 1
+}
