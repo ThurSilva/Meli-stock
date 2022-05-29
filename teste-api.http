@@ -55,9 +55,4 @@ GET http://localhost:5000/devices/lista
 
 ###
 #======================== DEVICES IN A STOCK ========================#
-GET http://localhost:5000/devicesInStock/lista
-Content-Type: application/json
-
-{
-    "stock_id": 1
-}
+GET http://localhost:5000/devicesInStock/lista/1

@@ -2,7 +2,7 @@ from app.models.device import Device
 from app.models.stock import Stock
 from flask import Flask, request,  jsonify
 from playhouse.shortcuts import model_to_dict
-from app.database import db
+from app.database.connect import db
 
 app = Flask(__name__)
 
@@ -34,7 +34,7 @@ def cad_device():
             return {"id": device}   
     else:
         db.close()
-        return "stock não existente!"
+        return "Stock não existente!"
 
 @app.route("/stock/update/<id>", methods=['PATCH'])
 def upd_stock(id):
@@ -82,11 +82,10 @@ def list_devices():
     response = [model_to_dict(device) for device in devices]
     return jsonify(response)
 
-@app.route("/devicesInStock/lista")
-def list_devicesInStock():
-    body = request.get_json()
+@app.route("/devicesInStock/lista/<id>")
+def list_devicesInStock(id):
     db.connect()
-    devices = Device.select().where(Device.stock == body["stock_id"]).execute()
+    devices = Device.select().where(Device.stock == [id]).execute()
     db.close()
     response = [model_to_dict(device) for device in devices]
     return jsonify(response)

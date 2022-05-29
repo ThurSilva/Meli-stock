@@ -1,6 +1,6 @@
 from app.models.stock import Stock
 from peewee import *
-from app.database import BaseModel
+from app.database.connect import BaseModel
 
 class Device (BaseModel):
     name = CharField()

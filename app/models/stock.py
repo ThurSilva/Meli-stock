@@ -1,5 +1,5 @@
 from peewee import *
-from app.database import BaseModel
+from app.database.connect import BaseModel
 
 class Stock (BaseModel):
     name = CharField(unique=True)
